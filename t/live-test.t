@@ -38,8 +38,26 @@ for my $i (0..3) {
     subsleep(0.25);
 }
 
+subsleep(0.5);
+
+lives_ok {
+    for (1..9) {
+        marching_ants();
+        subsleep(0.25);
+    }
+} "run a whole bunch of commands";
+
 done_testing();
 
+sub marching_ants {
+    $relay->enable(0,2);
+    subsleep(0.25);
+    $relay->disable(0,2);
+    subsleep(0.25);
+    $relay->enable(1,3);
+    subsleep(0.25);
+    $relay->disable(1,3);
+}
 
 sub subsleep {
     # poor man's sub-second sleep
