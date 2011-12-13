@@ -89,6 +89,20 @@ sub disable {
     $self->_relay_cmd(0x55, 1, @ids);
 }
 
+=head2 status
+
+This is basically a NOOP that gets the controller to return the current
+status of the relays.
+
+=cut
+
+sub status {
+    my ($self) = @_;
+    $self->_relay_cmd(0x55, 0);
+    $self->check_result;
+}
+
+
 =head2 _relay_cmd ($cmd, $val, @ids)
 
 Sends a command to the relay controller.
