@@ -26,12 +26,23 @@ for my $i (0..3) {
     lives_ok {
         $relay->enable($i);
     } "can enable relays id $i";
+    subsleep(0.250);
 }
+
+subsleep(0.5);
 
 for my $i (0..3) {
     lives_ok {
         $relay->disable($i);
     } "can disable relays id $i";
+    subsleep(0.25);
 }
 
 done_testing();
+
+
+sub subsleep {
+    # poor man's sub-second sleep
+    # (When did Time::HiRes enter core?)
+    select(undef,undef,undef,shift);
+}
