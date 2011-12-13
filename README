@@ -1,18 +1,12 @@
-TJC-Relay
+# TJC::Relay
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+## Perl module for driving a serial or USB attached relay controller.
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+I wrote this module to control a device I bought off eBay.
+It was described as: "RS232 quad relay controller"
+I bought it from this seller: http://myworld.ebay.com.au/r32190
 
-
-INSTALLATION
+## INSTALLATION
 
 To install this module, run the following commands:
 
@@ -21,14 +15,15 @@ To install this module, run the following commands:
 	make test
 	make install
 
-SUPPORT AND DOCUMENTATION
+## SUPPORT AND DOCUMENTATION
 
 After installing, you can find documentation for this module with the
 perldoc command.
 
     perldoc TJC::Relay
 
-You can also look for information at:
+If I ever upload this to CPAN, then you might be able to find some more info
+at these addresses:
 
     RT, CPAN's request tracker (report bugs here)
         http://rt.cpan.org/NoAuth/Bugs.html?Dist=TJC-Relay
@@ -43,7 +38,7 @@ You can also look for information at:
         http://search.cpan.org/dist/TJC-Relay/
 
 
-LICENSE AND COPYRIGHT
+## LICENSE AND COPYRIGHT
 
 Copyright (C) 2011 Toby Corkindale
 

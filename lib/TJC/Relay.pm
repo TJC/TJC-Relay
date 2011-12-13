@@ -42,6 +42,15 @@ has 'fh' => (
 
 =head1 SYNOPSIS
 
+Perl module for driving a serial or USB attached relay controller.
+
+I wrote this module to control a device I bought off eBay:
+
+    It was described as: "RS232 quad relay controller"
+    I bought it from this seller: http://myworld.ebay.com.au/r32190
+
+Example of use:
+
     use TJC::Relay;
 
     my $relay = TJC::Relay->new(tty => '/dev/ttyUSB0');
@@ -52,22 +61,6 @@ has 'fh' => (
 
 =cut
 
-# To open relay 1: 0x55 01 01 02 00 00 00 59
-# relay 2:         0x55 01 01 00 02 00 00 59
-# It acks with:
-# 0x22 01 00 02 00 00 00 25
-# To close relay 1:
-# 0x55 01 01 01 00 00 00 58
-# It acks with:
-# 0x22 01 00 01 00 00 00 24
-#
-# Open all with: 55 01 01 02 02 02 02 5F
-#
-# Check status with: 55 01 01 00 00 00 00 57
-#
-# It appears that the first byte is the command, I don't know what the next two
-# bytes are. Then you get four bytes, one for each relay. 01=off, 02=on.
-# The final byte is a checksum, just add up the first seven bytes.
 
 =head2 enable ($id, $id, $id, $id)
 
@@ -186,8 +179,25 @@ L<http://search.cpan.org/dist/TJC-Relay/>
 =back
 
 
-=head1 ACKNOWLEDGEMENTS
+=head1 DEVELOPMENT NOTES
 
+ To open relay 1: 0x55 01 01 02 00 00 00 59
+ relay 2:         0x55 01 01 00 02 00 00 59
+ It should ack with:
+ 0x22 01 00 02 00 00 00 25
+ To close relay 1:
+ 0x55 01 01 01 00 00 00 58
+ It acks with:
+ 0x22 01 00 01 00 00 00 24
+
+ Open all with: 55 01 01 02 02 02 02 5F
+
+ Check status with: 55 01 01 00 00 00 00 57
+
+It appears that the first byte is the command, I don't know what the next two
+bytes are. Then you get four bytes, one for each relay. 01=off, 02=on.
+
+The final byte is a checksum, just add up the first seven bytes.
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -198,7 +208,6 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
-
 
 =cut
 
