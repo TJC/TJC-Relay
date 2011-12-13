@@ -61,7 +61,6 @@ Example of use:
 
 =cut
 
-
 =head2 enable ($id, $id, $id, $id)
 
 Enables (closes) a relay.
@@ -115,8 +114,7 @@ sub _relay_cmd {
 
     my $checksum = $cmd + 1 + 1 + sum(@set);
 
-    my $bytes = pack('CCCCCCCC', $cmd, 1, 1, @set, $checksum);
-    warn "Writing to tty..\n";
+    my $bytes = pack('C8', $cmd, 1, 1, @set, $checksum);
     $self->fh->syswrite($bytes, 8);
 }
 
@@ -138,7 +136,6 @@ sub check_result {
     my @bytes = unpack('C8', $buf);
     say sprintf('%#x %x %x %x %x %x %x %x', @bytes);
 }
-
 
 =head1 AUTHOR
 
